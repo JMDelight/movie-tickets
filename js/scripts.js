@@ -5,6 +5,10 @@ function Movie(name, releaseDate, rating) {
   this.showTimes = [];
 };
 
+var userName;
+var userEmail;
+
+
 var basePrice = 10;
 var nowMilliseconds = new Date();
 var nowDays = Math.floor(nowMilliseconds/8.64e7);
@@ -39,5 +43,16 @@ Movie.prototype.price = function(userAge, showTime) {
 
 
 $(document).ready(function() {
+
+  $('#movie-2-form').submit(function(event) {
+    userName = $('#movie-2-name').val();
+    userEmail = $('#movie-2-email').val();
+    var showTime = $('#movie-2-time option:selected').val();
+    var age = $('input[name=movie-2-age]:checked').val();
+    alert(age + showTime);
+    event.preventDefault();
+  });
+
+
 
 });
