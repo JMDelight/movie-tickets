@@ -6,10 +6,18 @@ function Movie(name, releaseDate, rating) {
 };
 
 var basePrice = 10;
-var now = new Date();
-var fullDaysSinceEpoch = Math.floor(now/8.64e7);
+var nowMilliseconds = new Date();
+var nowDays = Math.floor(nowMilliseconds/8.64e7);
+Movie.prototype.isNewRelease = function() {
+  if (this.releaseDate < nowDays - 180) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 var actionTwo = new Movie("Action Two: Action Gets Bigger", 16950, "R");
+var actionOne = new Movie("Action One: the Birth of Action One", 16750, "PG-13");
 
 Movie.prototype.price = function(userAge) {
   var ticketPrice;
@@ -19,6 +27,9 @@ Movie.prototype.price = function(userAge) {
     ticketPrice = basePrice * 0.85;
   } else {
     ticketPrice = basePrice;
+  }
+  if (this.isNewRelease()) {
+    ticketPrice --;
   }
   return ticketPrice;
 }
