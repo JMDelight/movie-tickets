@@ -16,7 +16,7 @@ Movie.prototype.price = function(userAge) {
   if (userAge >= 60) {
     ticketPrice = basePrice * 0.8;
   } else if (userAge <= 12) {
-
+    ticketPrice = basePrice * 0.85;
   } else {
     ticketPrice = basePrice;
   }
