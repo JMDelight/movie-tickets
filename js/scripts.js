@@ -17,7 +17,7 @@ Movie.prototype.isNewRelease = function() {
 }
 
 var actionTwo = new Movie("Action Two: Action Gets Bigger", 16950, "R");
-var actionOne = new Movie("Action One: the Birth of Action One", 16750, "PG-13");
+var actionOne = new Movie("Action One: the Birth of Action", 16750, "PG-13");
 
 Movie.prototype.price = function(userAge, showTime) {
   var ticketPrice;
