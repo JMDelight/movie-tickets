@@ -7,6 +7,7 @@ function Movie(name, releaseDate, rating) {
 
 var userName;
 var userEmail;
+var totalCost = 0;
 
 
 var basePrice = 10;
@@ -20,8 +21,8 @@ Movie.prototype.isNewRelease = function() {
   }
 }
 
-var actionTwo = new Movie("Action Two: Action Gets Bigger", 16950, "R");
-var actionOne = new Movie("Action One: the Birth of Action", 16750, "PG-13");
+var movieTwo = new Movie("Action Two: Action Gets Bigger", 16950, "R");
+var movieOne = new Movie("Action One: the Birth of Action", 16750, "PG-13");
 
 Movie.prototype.price = function(userAge, showTime) {
   var ticketPrice;
@@ -45,12 +46,14 @@ Movie.prototype.price = function(userAge, showTime) {
 $(document).ready(function() {
 
   $('#movie-2-form').submit(function(event) {
+    event.preventDefault();
     userName = $('#movie-2-name').val();
     userEmail = $('#movie-2-email').val();
     var showTime = $('#movie-2-time option:selected').val();
     var age = $('input[name=movie-2-age]:checked').val();
-    alert(age + showTime);
-    event.preventDefault();
+    totalCost += movieTwo.price(age, showTime);
+    console.log(totalCost);
+
   });
 
 
